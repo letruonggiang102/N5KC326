@@ -1,0 +1,121 @@
+/* GAUGE */
+
+#speedtest {
+    margin-top: 3rem;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#speedtest #gauge {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 32px rgba(21, 55, 172, 0.25),
+        inset 0 -192px 192px -240px #e31212;
+    box-sizing: border-box;
+}
+
+#speedtest #gauge path:first-child {
+    opacity: 1 !important;
+    display: block !important;
+}
+
+#speedtest #gauge-label {
+    position: absolute;
+    top: 47.5%;
+    left: 50%;
+    font-size: 64px;
+    transform: translate(-50%, -50%);
+    color: #e31212;
+}
+
+#speedtest #gauge-label:after {
+    content: "PPM";
+    position: absolute;
+    font-size: 35%;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%, 100%);
+}
+
+#speedtest:before,
+#speedtest:after {
+    display: block;
+    position: absolute;
+    bottom: 25%;
+    font-family: inherit;
+    font-size: 14px;
+    color: #9198af;
+}
+
+#speedtest:before {
+    content: "0";
+    left: 28%;
+}
+
+#speedtest:after {
+    content: "1024";
+    right: 28%;
+}
+
+/* SLIDE BAR */
+
+.box-center-range {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 40rem;
+}
+
+.value {
+    border-bottom: 4px dashed #bdc3c7;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10em;
+    width: 300px;
+    height: 100px;
+    line-height: 60px;
+    margin: 40px auto;
+    letter-spacing: -0.07em;
+    text-shadow: white 2px 2px 2px;
+    color: #34495e;
+}
+
+input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    background-color: #bdc3c7;
+    width: 300px;
+    height: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+    outline: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #e74c3c;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+​input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: white;
+    border: 2px solid #e8e8e8;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.6);
+}
