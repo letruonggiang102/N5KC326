@@ -20,7 +20,7 @@
 .box-right {
     border-radius: 30px;
     position: relative;
-    
+    color: #0d8088;
 }
 
 .box-right:after {
@@ -255,7 +255,7 @@ p {
     justify-content: space-around;
     padding: 2rem 0;
     margin-top: 4rem;
-    border: 2px solid #0d8088;
+    border-bottom: 2px solid #0d8088;  
     border-left: none;
     border-right: none;
     list-style-type: none;
@@ -267,10 +267,7 @@ p {
     justify-items: center;
 }
 
-.led-items-left span {
-    font-weight: bold;
-    font-size: medium;
-    color: #0d8088;
+.led-items span {
     margin-top: 1.5rem;
 }
 
@@ -432,7 +429,7 @@ p {
     text-align: justify;
 }
 
-.content-act .act-item i {
+.content-act .aly-act i {
     font-size: 3rem;
     color: #34495e;
 }

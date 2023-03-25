@@ -12,23 +12,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BÁN THỨC ĂN</title>
     <link rel="stylesheet" href="/css/data.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+
 </head>
 
 <body>
     <div id="menu"></div>
-    <div class="contents"></div>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <main>
-        <h2>Beautiful Google Charts</h2>
-        <h5>Daily Page Hits</h5>
-        <div id="bar-chart"></div>
-        <h5>Traffic Over Time</h5>
-        <div id="line-chart"></div>
-        <h5>Page Hits per Country</h5>
-        <div id="pie-chart"></div>
-        <p>Google Charts can be <a href="https://google-developers.appspot.com/chart/">found here</a>.</p>
-        <p>An original pen by <a href="https://codepen.io/ejsado/">Eric</a>.</p>
-    </main>
+    <!-- <div class="contents"></div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+    <div class="contents-data">
+        <div class="bg-data">
+            <div id="triangle-bottomleft"></div>
+            <div id="triangle-bottomright">
+                <div class="inner-bot"></div>
+                <div class="inner-top"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <canvas id="chartjs-0"></canvas>
+            <style>
+                .container {
+                    display: inline;
+                    justify-content: space-evenly;
+                    position: absolute;
+                    width: 70%;
+                    z-index: 9999;
+                }
+            </style>
+        </div>
+    </div>
+
+
+    <script src="/js/data.js"></script>
 
     <script>
         $(document).ready(function () {
