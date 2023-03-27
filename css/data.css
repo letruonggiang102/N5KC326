@@ -8,17 +8,12 @@
 
 .bg-data {
     display: grid;
-    grid-template-columns: 65% auto;
     height: 95vh;
     width: 100%;
-    z-index: 9999;
     position: relative;
     color: #084387;
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    overflow: hidden;
-    z-index: 1000;
 }
 
 #triangle-bottomleft {
@@ -41,54 +36,72 @@
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
+    bottom: 10rem;
     pointer-events: none;
     transform: skewX(10deg);
 }
 
 #triangle-bottomright {
-    display: inline-block;
-    justify-content: center;
     position: relative;
-    height: 26rem;
-    width: 20rem;
-    border-radius: 3rem;
-    background-color: #0B6AB0;
-    transform: skewX(-10deg);
+    display: flex;
     justify-content: center;
-    z-index: 30;
-    opacity: 70%;
-    left: 90rem;
-    right: 0rem;
-    bottom: 0;
-    top: 0;
+    align-items: center;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 100rem;
+    align-items: center;
+    opacity: 50%;    
 }
 
-.inner-bot {
-    border-radius: 3rem;
+#triangle-bottomright div {
+    position: absolute;
+}
+
+#triangle-bottomright div:nth-child(1) {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 100rem;
     background-color: #084387;
-    transform: skewX(0deg);
-    left: 3rem;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    justify-content: center;
-    position: absolute;
-    z-index: 40;
+    animation: spinner -0.5s linear infinite;
+    animation-delay: -0.5s;
 }
 
-.inner-top {
-    border-radius: 3rem;
+#triangle-bottomright div:nth-child(2) {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 100rem;
     background-color: #042C71;
-    transform: skewX(0deg);
-    left: 6rem;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    position: absolute;
-    z-index: 50;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(15rem);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes spinner2 {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(15rem);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 body {
-    background: #5d91cc;
+    background: #d8dbdf;
 }

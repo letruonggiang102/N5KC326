@@ -17,13 +17,39 @@
 <body>
     <div id="menu"></div>
     <div class="contents"></div>
+    <div class="hero">
 
-    <script>
-        $(document).ready(function () {
-            $("#menu").load("/menu.html", function () {
+        <form>
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" id="name" required>
+                    <label for="name"><i class="fa-solid fa-user fa-bounce"></i> Ho va Ten <i
+                            class="fa-solid fa-hippo fa-bounce"></i> </label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="number" required>
+                    <label for="number"><i class="fa-solid fa-phone fa-shake"></i> Dien Thoai <i
+                            class="fa-solid fa-phone-volume fa-shake"></i> </label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label for="email"><i class="fa-solid fa-envelope fa-beat-fade"></i> Email Id</label>
+            </div>
+            <div class="input-group">
+                <textarea id="message" rows="8" required></textarea>
+                <label for="message"><i class="fa-solid fa-comment fa-beat-fade"></i> Your Message</label>
+            </div>
+            <button type="submit"><i class="fa-solid fa-paper-plane fa-bounce"></i> SUBMIT</button>
+        </form>
+
+        <script>
+            $(document).ready(function () {
+                $("#menu").load("/menu.html", function () {
+                })
             })
-        })
-    </script>
+        </script>
 </body>
 
 </html>
