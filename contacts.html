@@ -3,8 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Liên hệ</title>
     <meta charset="utf-8">
     <!-- Refresh trang -->
@@ -19,17 +18,15 @@
     <div class="contents"></div>
     <div class="hero">
 
-        <form>
+        <form id="contactform">
             <div class="row">
                 <div class="input-group">
                     <input type="text" id="name" required>
-                    <label for="name"><i class="fa-solid fa-user fa-bounce"></i> Ho va Ten <i
-                            class="fa-solid fa-hippo fa-bounce"></i> </label>
+                    <label for="name"><i class="fa-solid fa-user fa-bounce"></i> Ho va Ten <i class="fa-solid fa-hippo fa-bounce"></i> </label>
                 </div>
                 <div class="input-group">
                     <input type="text" id="number" required>
-                    <label for="number"><i class="fa-solid fa-phone fa-shake"></i> Dien Thoai <i
-                            class="fa-solid fa-phone-volume fa-shake"></i> </label>
+                    <label for="number"><i class="fa-solid fa-phone fa-shake"></i> Dien Thoai <i class="fa-solid fa-phone-volume fa-shake"></i> </label>
                 </div>
             </div>
 
@@ -45,10 +42,36 @@
         </form>
 
         <script>
-            $(document).ready(function () {
-                $("#menu").load("/menu.html", function () {
-                })
+            $(document).ready(function() {
+                $("#menu").load("/menu.html", function() {})
             })
+        </script>
+
+
+        <script>
+            let contactForm = document.getElementById("contactform");
+
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                // láy giá trị từ form
+                let phoneNumber = document.getElementById("number");
+                let userEmail = document.getElementById("email");
+                let userName = document.getElementById("name");
+                let emailBody = document.getElementById("message");
+
+                const emailSuject = `${userName.value} - ${phoneNumber.value} - ${userEmail.value}`
+                const adminEmail = 'giang@gmail.com'
+
+
+                location.href = "mailto:" + adminEmail + '?&subject=' + emailSuject + '&body=' + emailBody.value;
+                
+                // clear
+                userEmail.value = "";
+                userName.value = "";
+                emailBody.value = "";
+                phoneNumber.value = "";
+            });
         </script>
 </body>
 

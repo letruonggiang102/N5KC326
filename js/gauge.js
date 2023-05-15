@@ -6,52 +6,47 @@ var delay = 2000,
     tickDiff = 0,
     tickDiffValue = 0;
 
-// setInterval(() => {
-// 	value = Math.ceil(Math.random() * 100);
-// 	console.log(value)
-// }, 500)
-
 function valBetween(v, min, max) {
     return (Math.min(max, Math.max(min, v)));
 }
 
 (function loop() {
-    // value = 60
-    tick = valBetween(Math.ceil((value / 1024) * 28), 1, 28);
+
+    tick = valBetween(Math.ceil((value / 100) * 28), 1, 28);
     tickDiff = Math.abs(tick - tickStore);
     tickDiffValue = Math.abs(value - valueStore) / tickDiff;
-    console.log("tickDiff: " + tickDiffValue + " * " + tickDiff + " = " + (tickDiffValue * tickDiff));
+
     var counter = 0,
         valueStoreTemp = valueStore,
         tickStoreTemp = tickStore;
     if (value > valueStore) {
         for (i = tickStoreTemp; i <= tick; i++) {
-            (function (i) {
-                setTimeout(function () {
-                    // $('body').css('background-image', 'linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 50%), linear-gradient(' + $('#gauge path:nth-child(' + i + ')')[0].style.fill + ', ' + $('#gauge path:nth-child(' + i + ')')[0].style.fill + ' 50%, #fff 50%)');
-                    // $('#gauge').css('box-shadow', '0 0 32px rgba(21, 55, 172, 0.25), inset 0 -192px 192px -240px ' + $('#gauge path:nth-child(' + i + ')')[0].style.fill + ', inset 0 0 2px -1px ' + $('#gauge path:nth-child(' + i + ')')[0].style.fill);
+            (function(i) {
+                setTimeout(function() {
+
                     $('#gauge path:nth-child(' + i + ')').show();
                     $('#gauge-label')
                         .css('color', $('#gauge path:nth-child(' + i + ')')[0].style.fill)
                         .text(Math.ceil(valueStoreTemp + (tickDiffValue * Math.abs(tickStoreTemp - i))));
                     if (i == tick) { $('#gauge-label').text(value); }
-                    // console.log(i);
+
                 }, 50 * counter);
                 counter++;
             }(i));
         }
     } else if (value < valueStore) {
         for (i = tickStoreTemp; i >= tick; i--) {
-            (function (i) {
-                setTimeout(function () {
-                    // $('body').css('background-image', 'linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 50%), linear-gradient(' + $('#gauge path:nth-child(' + i + ')')[0].style.fill + ', ' + $('#gauge path:nth-child(' + i + ')')[0].style.fill + ' 50%, #fff 50%)');
-                    // $('#gauge').css('box-shadow', '0 0 32px rgba(21, 55, 172, 0.25), inset 0 -192px 192px -240px ' + $('#gauge path:nth-child(' + i + ')')[0].style.fill + ', inset 0 0 2px -1px ' + $('#gauge path:nth-child(' + i + ')')[0].style.fill);
+            (function(i) {
+                setTimeout(function() {
+
                     $('#gauge path:nth-child(' + i + ')').hide();
                     $('#gauge-label')
                         .css('color', $('#gauge path:nth-child(' + i + ')')[0].style.fill)
                         .text(Math.floor(valueStoreTemp - (tickDiffValue * Math.abs(tickStoreTemp - i))));
-                    if (i == tick) { $('#gauge-label').text(value); }
-                    // console.log(i);
+                    if (i == tick) {
+                        $('#gauge-label').text(value);
+                    }
+
                 }, 50 * counter);
                 counter++;
             }(i));
@@ -62,21 +57,11 @@ function valBetween(v, min, max) {
     window.setTimeout(loop, delay);
 })();
 
-// for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
-//     e.style.setProperty('--value', e.value);
-//     e.style.setProperty('--min', e.min == '' ? '0' : e.min);
-//     e.style.setProperty('--max', e.max == '' ? '100' : e.max);
-//     e.addEventListener('input', () => e.style.setProperty('--value', e.value));
-// }
-
-// 	updateColor = (scale, value)
-// 	$("styled-slider slider-progress").html("#{value/100}")
-
 // SLIDER BAR NEW
 
 var elem = document.querySelector('input[type="range"]');
 
-var rangeValue = function () {
+var rangeValue = function() {
     var newValue = elem.value;
     var target = document.querySelector('.value');
     target.innerHTML = newValue;
@@ -84,57 +69,83 @@ var rangeValue = function () {
 
 elem.addEventListener("input", rangeValue);
 
-// xem clip thingspeak
-var channel = 2040447;
-var readKey = 'T5UUCJ0P288JSDUR';
-var writeKey = 'GGLCZO0G8O4NIVIR';
 
-
-var ledFieldId = 1;
+var key = '125f4cc010f1946e4a1aadd67a75486fb';
 
 // hàm lấy giá trị ppm từ server
+let gasId = 1;
+
 function fetchPpm() {
 
-    const ppmFieldId = 4
-    const url = `https://api.thingspeak.com/channels/${channel}/fields/${ppmFieldId}/last.json?api_key=${readKey}`;
+    const url = `https://mqtt.tranquang.net/api/messages/topics/${gasId}?token=${key}&page=1&limit=1&order=DESC`;
+
+    console.log(gasId);
 
     // hàm lấy giá trị ppm từ server
-    $.get(url, function (data) {
+    $.get(url, function(response) {
 
         // giá trị ppm
-        var ppm = data[`field${ppmFieldId}`];
+
+        var message = response.data.messages[0];
+        var ppm = message.payload;
 
         // ghi vào biến 'value', chính là biến chứa giá trị của gauge
-        value = parseInt(ppm)
+        value = parseFloat(ppm)
 
     })
 }
 
 setInterval(fetchPpm, 1000);
 
-
-
-
 // class input của slider
 const slider = '.slider';
 
+
+
+function fetchAlarm() {
+
+
+    var topicId = 3;
+    const url = `https://mqtt.tranquang.net/api/topics/retain/${topicId}?token=${key}`;
+
+
+    $.get(url, function(response) {
+
+        var message = response.data;
+        var alarm = message.payload;
+
+        var target = document.querySelector('.value');
+        elem.value = alarm
+        target.innerHTML = alarm;
+
+    })
+}
+fetchAlarm();
+
+
 // hàm bắt sự kiện khi thay đổi giá trị slider
-$(slider).change(function (data) {
+$(slider).change(function(data) {
 
     // giá trị thay đổi
     const sliderValue = data.target.value;
 
-    const alarmLevelFieldId = 3;
-    const url = `https://api.thingspeak.com/update?api_key=${writeKey}&field${alarmLevelFieldId}=${slider}`;
+    const topicId = 3;
+    const url = `https://mqtt.tranquang.net/api/topics/publish/${topicId}?token=${key}&payload=${sliderValue}&payload_encoding=plain&qos=0&retain=true`;
 
     // hàm gửi dữ liệu lên server
-    $.get(url, function (data) {
-        if (data == 0) {
-            // logic xử lý khi giới hạn 15s thingspeak
+    $.get(url, function(data) {})
 
-            // bật thông báo lỗi
-            alert('giới hạn 15s');
-        }
-    })
+})
 
+document.addEventListener("station", e => {
+    const station = e.detail;
+
+    switch (station) {
+        case "station1":
+            gasId = 1;
+            break;
+        case "station2":
+            gasId = 9;
+            break;
+    }
 })

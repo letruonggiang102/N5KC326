@@ -8,22 +8,138 @@
     <title>Thành viên</title>
     <meta charset="utf-8">
     <!-- Refresh trang -->
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BÁN THỨC ĂN</title>
     <link rel="stylesheet" href="/css/members.css">
+
 </head>
 
 <body>
     <div id="menu"></div>
-    <div class="contents"></div>
+    <div id="content">
 
+        <div class="team-assignment">
+
+            <table class="responsive-table">
+                <caption class="page-title">Phân công thành viên</caption>
+                <thead>
+                    <tr>
+                        <th scope="col" class="col-name">Tên</th>
+                        <th scope="col" class="col-assignment">Công việc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="giang" data-name="giang">
+                        <td>Lê Trường Giang</td>
+                        <td>Trang chủ, nhiệt độ</td>
+                    </tr>
+                    <tr class="an" data-name="an">
+                        <td>Phan Trường An</td>
+                        <td>Thành viên</td>
+                    </tr>
+                    <tr class="long" data-name="long">
+                        <td>Nguyễn Duy Long</td>
+                        <td>Data</td>
+                    </tr>
+                    <tr class="phuc" data-name="phuc">
+                        <td>Đặng Hoài Phúc</td>
+                        <td>Thành viên,ss liên hệ</td>
+                    </tr>
+                    <tr class="dat" data-name="dat">
+                        <td>Nguyễn Tuấn Đạt</td>
+                        <td>Liên hệ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="team-card">
+
+            <h1 class="page-title">Giới thiệu thành viên</h1>
+
+            <div class="item-wrapper">
+                <div class="item giang" data-name="giang">
+                    <div class="info">
+                        <h5 class="name">Lê Trường Giang</h5>
+                        <h5 class="id">B1907003</h5>
+                    </div>
+                    <div class="img">
+                        <!-- <img src="/imgs/phucgiang.png" alt="" style="--c: #945f31;"> -->
+                        <img src="/image/giang.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="item an" data-name="an">
+                    <div class="info">
+                        <h5 class="name">Phan Trường An</h5>
+                        <h5 class="id">B1907084</h5>
+                    </div>
+                    <div class="img">
+                        <img src="/image/AN.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="item long" data-name="long">
+                    <div class="info">
+                        <h5 class="name">Nguyễn Duy Long</h5>
+                        <h5 class="id">B1907035</h5>
+                    </div>
+                    <div class="img">
+                        <img src="/image/Long.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="item phuc" data-name="phuc">
+                    <div class="info">
+                        <h5 class="name">Đặng Hoài Phúc</h5>
+                        <h5 class="id">B1907052</h5>
+                    </div>
+                    <div class="img">
+                        <img src="/image/Phuc.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="item dat" data-name="dat">
+                    <div class="info">
+                        <h5 class="name">Nguyễn Tuấn Đạt</h5>
+                        <h5 class="id">B1907000</h5>
+                    </div>
+                    <div class="img">
+                        <img src="/image/Dat.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         $(document).ready(function () {
-            $("#menu").load("/menu.html", function () {
+            $("#menu").load("/menu.html")
+
+            $(".item").each(function (ele) {
+                $(this).css({ "filter": "grayscale(60%)" })
             })
+
+
+            $(".item").hover(function (ele) {
+                $(this).css({ "filter": "grayscale(0%)", "--_p": "75%" })
+                $(".team-assignment ." + $(this).attr("data-name")).css({ "font-weight": "bold", "color": "var(--primary)" })
+            }, function (ele) {
+                $(this).css({ "filter": "grayscale(60%)", "--_p": "125%" })
+                $(".team-assignment ." + $(this).attr("data-name")).css({ "font-weight": "", "color": "black" })
+            })
+
+            $("tr").hover(function (ele) {
+                $(this).css({ "font-weight": "bold", "color": "var(--primary)" })
+                $(".team-card ." + $(this).attr("data-name")).css({ "filter": "grayscale(0%)", "--_p": "75%" })
+            }, function (ele) {
+                $(this).css({ "font-weight": "", "color": "black" })
+                $(".team-card ." + $(this).attr("data-name")).css({ "filter": "grayscale(60%)", "--_p": "125%" })
+            })
+
         })
+
+
     </script>
 </body>
 

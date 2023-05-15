@@ -3,9 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-        </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+    </script>
     <title>Nhiệt độ</title>
     <meta charset="utf-8">
     <!-- Refresh trang -->
@@ -60,9 +59,15 @@
                 <p>Chào mừng đến với hệ thống khí giám sát khí gas của bạn</p>
             </div>
 
+            <select id="stations">
+                <option>Station 1</option>
+                <option>Station 2</option>
+            </select>
+
             <div class="led-items">
+
                 <div class="led-items-left">
-                    <div class="led-connect"></div>
+                    <div class="led-connect "></div>
                     <span>LED CONNECT</span>
                 </div>
 
@@ -106,14 +111,14 @@
     </div>
 
     <script>
-        $(document).ready(function () {
-            $("#menu").load("/menu.html", function () { });
+        $(document).ready(function() {
+            $("#menu").load("/menu.html", function() {});
         });
     </script>
 
     <script>
-        $(document).ready(function () {
-            $("#gauge").load("/gauge.html", function () { });
+        $(document).ready(function() {
+            $("#gauge").load("/gauge.html", function() {});
         });
     </script>
 

@@ -255,7 +255,7 @@ p {
     justify-content: space-around;
     padding: 2rem 0;
     margin-top: 4rem;
-    border-bottom: 2px solid #0d8088;  
+    border-bottom: 2px solid #0d8088;
     border-left: none;
     border-right: none;
     list-style-type: none;
@@ -343,11 +343,13 @@ p {
 }
 
 .led-green {
-    -webkit-animation: blinkGreen 1s infinite;
+    /* -webkit-animation: blinkGreen 1s infinite;
     -moz-animation: blinkGreen 1s infinite;
     -ms-animation: blinkGreen 1s infinite;
     -o-animation: blinkGreen 1s infinite;
-    animation: blinkGreen 1s infinite;
+    animation: blinkGreen 1s infinite; */
+
+    background-color: green;
 }
 
 
@@ -433,3 +435,21 @@ p {
     font-size: 3rem;
     color: #34495e;
 }
+
+#stations  {
+    display: flex;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+    height: 5rem;
+    width: 10rem;
+    background: linear-gradient(to right, #6a8284 0%, #507070 51%);
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 3rem;
+}
+/* 
+#stations option {
+    font-weight: bold;
+    font-size: xx-large;
+} */

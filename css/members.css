@@ -1,18 +1,255 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,200;1,400;1,500&display=swap');
-
-html,
-
-body {
-    height: 2rem;
+#content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	cursor: pointer;
+.team-assignment {
+    width: 90%;
+    margin: 5% 3%;
 }
 
-html {
-    font-size: 62.5%; 
+@media (min-width: 48em) {
+    .team-assignment {
+        margin: 2%;
+    }
+}
+
+@media (min-width: 75em) {
+    .team-assignment {
+        margin: 2em auto;
+        max-width: 75em;
+    }
+}
+
+.team-assignment .responsive-table {
+    width: 100%;
+    margin-bottom: 0.5em;
+    border-spacing: 0;
+}
+
+.team-assignment .responsive-table thead {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table thead {
+        position: relative;
+        clip: auto;
+        height: auto;
+        width: auto;
+        overflow: auto;
+    }
+}
+
+.team-assignment .responsive-table thead th {
+    background-color: rgb(38, 137, 13);
+    border: 1px solid rgb(134, 188, 37);
+    font-weight: normal;
+    text-align: center;
+    color: white;
+}
+
+.team-assignment .responsive-table thead .col-name {
+    width: 50%;
+}
+
+.team-assignment .responsive-table thead .col-assignment {
+    width: 50%;
+}
+
+.team-assignment .responsive-table tbody,
+.team-assignment .responsive-table tr,
+.team-assignment .responsive-table th,
+.team-assignment .responsive-table td {
+    display: block;
+    padding: 0;
+    text-align: left;
+    white-space: normal;
+}
+
+.team-assignment .responsive-table tr {
+    cursor: default;
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tr {
+        display: table-row;
+    }
+}
+
+.team-assignment .responsive-table tr:hover {
+    cursor: pointer;
+}
+
+.team-assignment .responsive-table th,
+.team-assignment .responsive-table td {
+    display: table-cell;
+    padding: 0.1em;
+}
+
+.team-assignment .responsive-table caption {
+    text-align: center;
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tbody {
+        display: table-row-group;
+    }
+}
+
+.team-assignment .responsive-table tbody tr {
+    margin-bottom: 1em;
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tbody tr {
+        display: table-row;
+        border-width: 1px;
+    }
+}
+
+.team-assignment .responsive-table tbody tr:last-of-type {
+    margin-bottom: 0;
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tbody tr:nth-of-type(even) {
+        background-color: rgba(0, 0, 0, 0.12);
+    }
+}
+
+.team-assignment .responsive-table tbody th[scope=row] {
+    background-color: rgb(38, 137, 13);
+    color: white;
+}
+
+@media (min-width: 30em) {
+    .team-assignment .responsive-table tbody th[scope=row] {
+        border-left: 1px solid rgb(134, 188, 37);
+        border-bottom: 1px solid rgb(134, 188, 37);
+    }
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tbody th[scope=row] {
+        background-color: transparent;
+        color: rgb(0, 0, 1);
+        text-align: left;
+    }
+}
+
+.team-assignment .responsive-table tbody td {
+    text-align: right;
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tbody td {
+        border-left: 1px solid rgb(134, 188, 37);
+        border-bottom: 1px solid rgb(134, 188, 37);
+        text-align: center;
+    }
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tbody td:last-of-type {
+        border-right: 1px solid rgb(134, 188, 37);
+    }
+}
+
+.team-assignment .responsive-table tbody td[data-type=currency] {
+    text-align: right;
+}
+
+.team-assignment .responsive-table tbody td[data-title]:before {
+    content: attr(data-title);
+    float: left;
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+@media (min-width: 30em) {
+    .team-assignment .responsive-table tbody td[data-title]:before {
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 48em) {
+    .team-assignment .responsive-table tbody td[data-title]:before {
+        content: none;
+    }
+}
+
+.team-card {
+    width: 90%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.team-card .item-wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-card .item-wrapper .item {
+    width: 35rem;
+    height: 13rem;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    align-items: center;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.team-card .item-wrapper .item .info {
+    margin-left: 1.5rem;
+}
+
+.team-card .item-wrapper .item .info .name {
+    font-size: 1.5rem;
+}
+
+.team-card .item-wrapper .item .info .id {
+    font-size: 1.1rem;
+}
+
+.team-card .item-wrapper .item .img {
+    margin-right: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-card .item-wrapper .item .img img {
+    width: 120px;
+    height: 120px;
+    --g: 2px;
+    /* the gap */
+    --b: 6px;
+    /* border thickness*/
+    --c: var(--primary);
+    /* the color */
+    padding: calc(var(--g) + var(--b));
+    --_c: #0000 0 25%, var(--c) 0 50%;
+    --_g1: repeating-linear-gradient(90deg, var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg, var(--_c)) repeat-y;
+    background: var(--_g1) var(--_p, 25%) 0, var(--_g2) 0 var(--_p, 125%), var(--_g1) var(--_p, 125%) 100%, var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b), var(--b) 200%;
+    transition: 0.3s;
 }

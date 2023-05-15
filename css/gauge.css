@@ -60,7 +60,7 @@
 }
 
 #speedtest:after {
-    content: "1024";
+    content: "100";
     right: 28%;
 }
 
